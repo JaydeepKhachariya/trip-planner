@@ -34,10 +34,10 @@ export default function App() {
                   path="/hotels/:slug"
                   element={<PrivateRoute component={HotelInfo} />}
                 />
-                {/* <Route
+                <Route
                   path="/plans/:slug"
                   element={<PrivateRoute component={PlanInfo} />}
-                /> */}
+                />
                 <Route
                   path="/my-profile"
                   element={<PrivateRoute component={MyProfile} />}

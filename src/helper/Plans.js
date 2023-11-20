@@ -1,5 +1,6 @@
 export const plans = [
   {
+    id: 1,
     name: "Coastal Retreat",
     image: "assets/images/CoastalRetreat.jpg",
     days: "5 days",
@@ -12,6 +13,7 @@ export const plans = [
     drop_point: "City B Beach Resort",
   },
   {
+    id: 2,
     name: "Mountain Adventure",
     image: "assets/images/MountainAdventure.jpg",
     days: "7 days",
@@ -24,6 +26,7 @@ export const plans = [
     drop_point: "City D Mountain Lodge",
   },
   {
+    id: 3,
     name: "Historical Tour",
     image: "assets/images/HistoricalTour.jpg",
     days: "3 days",
@@ -36,6 +39,7 @@ export const plans = [
     drop_point: "City F Hotel",
   },
   {
+    id: 4,
     name: "Desert Safari",
     image: "assets/images/DesertSafari.jpg",
     days: "4 days",
@@ -48,6 +52,7 @@ export const plans = [
     drop_point: "City H Desert Camp",
   },
   {
+    id: 5,
     name: "Cultural Expedition",
     image: "assets/images/CulturalExpedition.jpg",
     days: "6 days",

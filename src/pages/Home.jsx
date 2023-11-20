@@ -13,8 +13,14 @@ import { LoadingSkeleton } from "../components/LoadingSkeleton";
 import { getHotels } from "../api/request";
 import { useQuery } from "react-query";
 import { plans } from "../helper/Plans";
+import { buses } from "../helper/Buses";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Home({ setDarkMode }) {
+  
+
+
   const [selectedItem, setSelectedItem] = useState("plans");
 
   const fetchHotels = async () => {
@@ -52,6 +58,16 @@ export default function Home({ setDarkMode }) {
             >
               Hotels
             </button>
+            <button
+              onClick={() => setSelectedItem("bus")}
+              className={`${
+                selectedItem === "bus"
+                  ? "bg-black text-white"
+                  : "bg-none text-black"
+              } px-2 py-1 rounded-sm text-xl`}
+            >
+              Buses
+            </button>
           </div>
           <Grid container spacing={2}>
             {selectedItem === "hotel"
@@ -60,11 +76,20 @@ export default function Home({ setDarkMode }) {
                     <HotelCard hotel={item} />
                   </Grid>
                 ))
-              : plans?.map((item, i) => (
+              :selectedItem === "plans"?plans?.map((item, i) => (
                   <Grid key={i} item xs={12} md={4}>
                     <PlanCard plan={item} />
                   </Grid>
-                ))}
+                ))
+                :
+                buses.map((el,i)=>{
+                  return(
+                    <Grid key={i} item xs={12} md={4}>
+                    <BusCard bus={el} />
+                  </Grid>
+                  )
+                })
+              }
           </Grid>
         </Container>
       </main>
@@ -73,10 +98,11 @@ export default function Home({ setDarkMode }) {
 }
 
 const PlanCard = ({ plan }) => {
+  const navigate = useNavigate();
   return (
     <Card
       sx={{ cursor: "pointer" }}
-      onClick={() => navigate(`/hotels/${plan.name}`)}
+      onClick={() => navigate(`/plans/${plan.id}`)}
     >
       <CardMedia
         sx={{ objectFit: "cover" }}
@@ -90,6 +116,31 @@ const PlanCard = ({ plan }) => {
         <Typography sx={{ cursor: "pointer" }}>{plan.name}</Typography>
         <Typography marginTop={1} fontSize={14}>
           {plan.price} price for {plan.days}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+};
+
+const BusCard = ({ bus }) => {
+  const navigate = useNavigate();
+  return (
+    <Card
+      sx={{ cursor: "pointer" }}
+      onClick={() => navigate(`/hotels/${plan.name}`)}
+    >
+      <CardMedia
+        sx={{ objectFit: "cover" }}
+        component="img"
+        height="244"
+        image={bus.img}
+        alt="Paella dish"
+        loading="lazy"
+      />
+      <CardContent>
+        <Typography sx={{ cursor: "pointer" }}>{bus.name}</Typography>
+        <Typography marginTop={1} fontSize={14}>
+          {bus.ticketPrice}
         </Typography>
       </CardContent>
     </Card>
