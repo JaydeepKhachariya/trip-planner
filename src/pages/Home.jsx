@@ -127,7 +127,7 @@ const BusCard = ({ bus }) => {
   return (
     <Card
       sx={{ cursor: "pointer" }}
-      onClick={() => navigate(`/hotels/${plan.name}`)}
+      onClick={() => navigate(`/bus/${bus.id}`)}
     >
       <CardMedia
         sx={{ objectFit: "cover" }}
